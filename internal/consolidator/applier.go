@@ -5,14 +5,14 @@ import (
 	"regexp"
 	"strings"
 
-	"codeberg.org/brianstarke/schemactor/internal/parser"
-	"codeberg.org/brianstarke/schemactor/internal/state"
+	"github.com/brianstarke/schemactor/internal/parser"
+	"github.com/brianstarke/schemactor/internal/state"
 )
 
 // Applier applies parsed statements to database state
 type Applier struct {
-	state             *state.DatabaseState
-	currentMigration  int
+	state            *state.DatabaseState
+	currentMigration int
 }
 
 // NewApplier creates a new applier

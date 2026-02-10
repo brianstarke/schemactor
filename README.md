@@ -31,7 +31,7 @@ Schemactor analyzes a directory of migration files, tracks schema changes throug
 ### From Source
 
 ```bash
-go install codeberg.org/brianstarke/schemactor/cmd/schemactor@latest
+go install github.com/brianstarke/schemactor/cmd/schemactor@latest
 ```
 
 The binary will be installed to `$GOPATH/bin/schemactor` (or `$HOME/go/bin/schemactor`).
@@ -39,7 +39,7 @@ The binary will be installed to `$GOPATH/bin/schemactor` (or `$HOME/go/bin/schem
 ### Build Locally
 
 ```bash
-git clone https://codeberg.org/brianstarke/schemactor
+git clone https://github.com/brianstarke/schemactor
 cd schemactor
 go build -o schemactor ./cmd/schemactor
 ```

@@ -5,7 +5,7 @@ import (
 	"regexp"
 	"strings"
 
-	"codeberg.org/brianstarke/schemactor/internal/state"
+	"github.com/brianstarke/schemactor/internal/state"
 )
 
 // ObjectType represents the type of database object

@@ -3,9 +3,9 @@ package consolidator
 import (
 	"fmt"
 
-	"codeberg.org/brianstarke/schemactor/internal/migration"
-	"codeberg.org/brianstarke/schemactor/internal/parser"
-	"codeberg.org/brianstarke/schemactor/internal/state"
+	"github.com/brianstarke/schemactor/internal/migration"
+	"github.com/brianstarke/schemactor/internal/parser"
+	"github.com/brianstarke/schemactor/internal/state"
 )
 
 // Consolidator orchestrates the migration consolidation process

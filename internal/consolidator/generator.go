@@ -4,15 +4,15 @@ import (
 	"fmt"
 	"strings"
 
-	"codeberg.org/brianstarke/schemactor/internal/migration"
-	"codeberg.org/brianstarke/schemactor/internal/state"
+	"github.com/brianstarke/schemactor/internal/migration"
+	"github.com/brianstarke/schemactor/internal/state"
 )
 
 // Generator generates SQL from database state
 type Generator struct {
-	state       *state.DatabaseState
-	graph       *DependencyGraph
-	enumsUsed   map[string]bool
+	state     *state.DatabaseState
+	graph     *DependencyGraph
+	enumsUsed map[string]bool
 }
 
 // NewGenerator creates a new SQL generator
