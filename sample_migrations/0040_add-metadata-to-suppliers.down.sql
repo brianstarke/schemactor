@@ -1,0 +1,4 @@
+ALTER TABLE suppliers
+DROP COLUMN IF EXISTS website,
+DROP COLUMN IF EXISTS tax_id,
+DROP COLUMN IF EXISTS payment_terms;

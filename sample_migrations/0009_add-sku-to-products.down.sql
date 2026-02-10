@@ -1,0 +1,4 @@
+DROP INDEX IF EXISTS idx_products_sku;
+
+ALTER TABLE products
+DROP COLUMN IF EXISTS sku;

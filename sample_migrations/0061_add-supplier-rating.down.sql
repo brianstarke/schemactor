@@ -1,0 +1,3 @@
+ALTER TABLE suppliers
+DROP COLUMN IF EXISTS rating,
+DROP COLUMN IF EXISTS total_orders;
