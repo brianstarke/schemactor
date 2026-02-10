@@ -30,11 +30,21 @@ Schemactor analyzes a directory of migration files, tracks schema changes throug
 
 ### From Source (Latest Release)
 
+**Method 1: Direct Go Install**
 ```bash
 go install github.com/brianstarke/schemactor/cmd/schemactor@latest
 ```
 
+**Method 2: Clone and Build (guaranteed to work)**
+```bash
+git clone https://github.com/brianstarke/schemactor.git
+cd schemactor
+make install
+```
+
 The binary will be installed to `$GOPATH/bin/schemactor` (or `$HOME/go/bin/schemactor`).
+
+**Note**: If the `go install` command fails with "does not contain package" error, use Method 2 instead. This happens when Go's module cache hasn't updated yet after a new release.
 
 ### Build Locally
 
