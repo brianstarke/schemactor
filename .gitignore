@@ -16,6 +16,7 @@
 *.out
 
 schemactor
+!/cmd/schemactor
 
 # Build artifacts
 dist/
