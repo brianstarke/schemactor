@@ -28,7 +28,7 @@ Schemactor analyzes a directory of migration files, tracks schema changes throug
 
 ## Installation
 
-### From Source
+### From Source (Latest Release)
 
 ```bash
 go install github.com/brianstarke/schemactor/cmd/schemactor@latest
@@ -38,10 +38,35 @@ The binary will be installed to `$GOPATH/bin/schemactor` (or `$HOME/go/bin/schem
 
 ### Build Locally
 
+Using the Makefile (recommended):
+
+```bash
+git clone https://github.com/brianstarke/schemactor
+cd schemactor
+make build
+```
+
+Using Go directly (basic build):
+
 ```bash
 git clone https://github.com/brianstarke/schemactor
 cd schemactor
 go build -o schemactor ./cmd/schemactor
+```
+
+### Installation from Local Build
+
+```bash
+make install    # Builds and installs to GOPATH/bin
+```
+
+### Version Information
+
+Show the current version:
+
+```bash
+schemactor --version
+# Output: schemactor version v0.1.0-dev-f147c76
 ```
 
 ## Usage
@@ -69,6 +94,12 @@ This will:
 2. Run all UP migrations in order
 3. Run all DOWN migrations in reverse order
 4. Report success or failure
+
+Show version:
+
+```bash
+./schemactor --version
+```
 
 Show help:
 
@@ -144,6 +175,51 @@ From 73 input migrations (146 files), Schemactor generates 12 consolidated migra
 - 84% reduction in migration count
 - All changes properly consolidated
 - Dependencies correctly ordered
+
+## Build System
+
+### Makefile Targets
+
+The Makefile provides convenient targets for building and releasing:
+
+```bash
+make help        # Show all available targets
+make build       # Build for current platform (development version)
+make build-all   # Build for all platforms (development version)
+make release     # Build release binaries (requires git tag)
+make install     # Install to GOPATH/bin
+make clean       # Remove build artifacts
+make version     # Show version information
+```
+
+### Versioning
+
+Schemactor uses Git-based versioning:
+
+- **Development builds**: `v0.1.0-dev-<commit-short>` (with `-dirty` suffix if uncommitted changes)
+- **Release builds**: Exact version from git tag (e.g., `v0.1.0`)
+
+### Creating a Release
+
+1. Ensure clean working tree:
+   ```bash
+   git status  # Should show no changes
+   ```
+
+2. Create and push a git tag:
+   ```bash
+   git tag v0.1.0
+   git push origin v0.1.0
+   ```
+
+3. Build release binaries:
+   ```bash
+   make release
+   ```
+
+Release binaries will be created in the `dist/` directory with names like:
+- `schemactor-v0.1.0-linux-amd64`
+- `schemactor-v0.1.0-darwin-amd64`
 
 ## License
 
