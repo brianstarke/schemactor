@@ -201,25 +201,75 @@ Schemactor uses Git-based versioning:
 
 ### Creating a Release
 
-1. Ensure clean working tree:
+Follow these steps to create a new release:
+
+1. **Prepare the release**:
    ```bash
+   # Ensure all changes are committed and working tree is clean
    git status  # Should show no changes
+   
+   # Update version in documentation if needed
+   # Run tests to ensure everything works
+   make build-all  # Test cross-platform builds
    ```
 
-2. Create and push a git tag:
+2. **Create and push the git tag**:
    ```bash
+   # Create a semantic version tag (e.g., v0.1.0, v0.2.0, v1.0.0)
    git tag v0.1.0
+   
+   # Push the tag to GitHub
    git push origin v0.1.0
    ```
 
-3. Build release binaries:
+3. **Build release binaries**:
    ```bash
+   # Build release binaries for all platforms
    make release
    ```
 
-Release binaries will be created in the `dist/` directory with names like:
+4. **Create GitHub Release**:
+   - Go to your repository on GitHub
+   - Click "Releases" → "Create a new release"
+   - Choose the tag you just pushed (e.g., `v0.1.0`)
+   - Add release notes describing the changes
+   - Upload the binaries from the `dist/` directory:
+     - `schemactor-v0.1.0-linux-amd64`
+     - `schemactor-v0.1.0-darwin-amd64`
+
+5. **Verify the release**:
+   ```bash
+   # Test the release binaries
+   ./dist/schemactor-v0.1.0-linux-amd64 --version
+   # Should output: schemactor version v0.1.0
+   
+   # Test installation from the new release
+   go install github.com/brianstarke/schemactor/cmd/schemactor@v0.1.0
+   ```
+
+### Release Checklist
+
+Before creating a release, ensure:
+
+- [ ] All changes are committed and working tree is clean
+- [ ] Version number follows semantic versioning (MAJOR.MINOR.PATCH)
+- [ ] Tests pass on all target platforms
+- [ ] Documentation is updated (if needed)
+- [ ] CHANGELOG is updated (if you maintain one)
+- [ ] Release notes are prepared
+
+### Release Binary Naming
+
+Release binaries follow this pattern:
+```
+schemactor-VERSION-PLATFORM-ARCHITECTURE
+```
+
+Examples:
 - `schemactor-v0.1.0-linux-amd64`
 - `schemactor-v0.1.0-darwin-amd64`
+
+The build system automatically creates these files in the `dist/` directory when you run `make release`.
 
 ## License
 
